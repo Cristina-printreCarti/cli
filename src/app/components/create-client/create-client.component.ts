@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ClientService } from 'src/app/services/client.service';
 
@@ -13,7 +14,7 @@ export class CreateClientComponent implements OnInit {
   submitted = false;
 
 
-  constructor(private fb: UntypedFormBuilder, private _clientService: ClientService, private toastr: ToastrService ) { 
+  constructor(private fb: UntypedFormBuilder, private _clientService: ClientService, private router: Router, private toastr: ToastrService ) { 
     this.creatClient = this.fb.group({
       name: ['', Validators.required],
       phone: ['', Validators.required],
@@ -37,7 +38,8 @@ export class CreateClientComponent implements OnInit {
     }
     
     this._clientService.addClient(client).then(() =>{
-      this.toastr.success('Client added with success!', 'Client added')
+      this.toastr.success('Client added with success!', 'Client added');
+      this.router.navigate(['/list-clients'])
     }).catch(err => {
       console.log(err);
     })
