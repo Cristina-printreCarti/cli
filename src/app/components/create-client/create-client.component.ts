@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ClientService } from 'src/app/services/client.service';
 
@@ -9,11 +9,11 @@ import { ClientService } from 'src/app/services/client.service';
   styleUrls: ['./create-client.component.css']
 })
 export class CreateClientComponent implements OnInit {
-  creatClient: FormGroup;
+  creatClient: UntypedFormGroup;
   submitted = false;
 
 
-  constructor(private fb: FormBuilder, private _clientService: ClientService, private toastr: ToastrService ) { 
+  constructor(private fb: UntypedFormBuilder, private _clientService: ClientService, private toastr: ToastrService ) { 
     this.creatClient = this.fb.group({
       name: ['', Validators.required],
       phone: ['', Validators.required],
