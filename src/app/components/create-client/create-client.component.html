@@ -1,1 +1,30 @@
-<p>create-client works!</p>
+<div class="container pt-4">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h3>Add client</h3>
+                    <span style="color:red" *ngIf="submitted && creatClient.invalid">*Toate campurile sunt obligatorii</span>
+                    <form class="mt-4" [formGroup]="creatClient" (ngSubmit)="addClient()">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control mb-2" formControlName="name" placeholder="Name">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control mb-2" formControlName="phone" placeholder="Phone">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control mb-2" formControlName="address" placeholder="Address">
+                        </div>
+
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="text" class="btn btn-danger mx-2" routerLink="/list-clients">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
