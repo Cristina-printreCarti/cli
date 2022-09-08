@@ -3,24 +3,25 @@
         <div class="card-body">
             <div class="d-flex justify-content-between">
                 <span class="h4 text-center">Clients</span>
-                <button class="btn btn-dark btn-sm" routerLink="/create-client">Back</button>
+                <h5 *ngIf="clients.length == 0" >There are no clients in the database</h5>
+                <button class="btn btn-dark btn-sm" routerLink="/create-client">Add client</button>
             </div>
-            <table class="table table-dark table-striped mt-3">
+            <table *ngIf="clients.length > 0" class="table table-dark table-striped mt-3">
                 <thead>
                     <tr>
-                        <th>Nume</th>
-                        <th>Telefon</th>
-                        <th>Adresa</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Address</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of items | async">
-                        <th>{{item.name}}</th>
-                        <td>{{item.phone}}</td>
-                        <td>{{item.address}}</td>
-                        <td><i class="fa-solid fa-pen-to-square text-info"></i>
-                            <i class="fa-solid fa-trash text-danger mx-2"></i>
+                    <tr *ngFor="let client of clients">
+                        <td>{{client.name}}</td>
+                        <td>{{client.phone}}</td>
+                        <td>{{client.address}}</td>
+                        <td><i class="fa-solid fa-pen-to-square text-info" [routerLink]="['/edit-client/', client.id]"></i>
+                            <i (click)="deleteClient(client.id)" class="fa-solid fa-trash text-danger mx-2"></i>
                         </td>
                     </tr>
                 </tbody>
