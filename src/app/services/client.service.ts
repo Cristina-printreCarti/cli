@@ -22,7 +22,11 @@ export class ClientService {
   }
 
   getClient(id: string): Observable<any>{
-    return this.firestore.collection('clients').doc().snapshotChanges();
+    return this.firestore.collection('clients').doc(id).snapshotChanges();
+  }
+
+  actualClient(id: string, data: any):Promise<any>{
+    return this.firestore.collection('clients').doc(id).update(data);
   }
 
 }

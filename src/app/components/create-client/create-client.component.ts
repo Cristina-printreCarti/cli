@@ -29,12 +29,22 @@ export class CreateClientComponent implements OnInit {
     this.editClient();
   }
 
-  addClient(){
+  addEditClient(){
     this.submitted = true;
 
     if(this.creatClient.invalid){
       return;
     }
+
+    if(this.id === null){
+      this.addClient();
+    }else{
+      this.edClient(this.id);
+    }
+
+  }
+
+  addClient(){
     const client: any = {
       name: this.creatClient.value.name,
       phone: this.creatClient.value.phone,
@@ -50,13 +60,14 @@ export class CreateClientComponent implements OnInit {
       console.log(err);
       this.loading = false;
     })
-
   }
 
   editClient(){
     this.title = 'Edit client';
     if(this.id !== null){
+      this.loading = true;
       this._clientService.getClient(this.id).subscribe(data => {
+        this.loading = false;
         console.log(data.payload.data()['name']);
         this.creatClient.setValue({
           name: data.payload.data()['name'],
@@ -68,7 +79,23 @@ export class CreateClientComponent implements OnInit {
   }
 
 
-  
+  edClient(id:string){
+    this.loading = true;
+    const client: any = {
+      name: this.creatClient.value.name,
+      phone: this.creatClient.value.phone,
+      address: this.creatClient.value.address,
+    }
+    this._clientService.actualClient(id, client);
+    this._clientService.actualClient(id, client).then( () => {
+      this.loading =false;
+      this.toastr.info('Client updated', 'Client modified',{
+        positionClass: 'toast-bottom-right'
+      })
+      this.router.navigate(['/list-clients'])
+    })
+    
+  }
 
 
 }

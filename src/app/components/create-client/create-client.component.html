@@ -10,7 +10,7 @@
                     </h3>
                     <span style="color:red" *ngIf="submitted && creatClient.invalid">*Toate campurile sunt
                         obligatorii</span>
-                    <form class="mt-4" [formGroup]="creatClient" (ngSubmit)="addClient()">
+                    <form class="mt-4" [formGroup]="creatClient" (ngSubmit)="addEditClient()">
                         <div class="row">
                             <div class="col">
                                 <input type="text" class="form-control mb-2" formControlName="name" placeholder="Name">
