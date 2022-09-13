@@ -14,7 +14,7 @@ export class ClientService {
   }
 
   getClients():Observable<any>{
-    return this.firestore.collection('clients', ref => ref.orderBy('name', 'asc')).snapshotChanges();
+    return this.firestore.collection('clients', ref => ref.orderBy('lastname', 'asc')).snapshotChanges();
   }
 
   deleteClient(id: string){

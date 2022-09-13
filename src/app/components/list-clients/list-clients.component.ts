@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ClientService } from 'src/app/services/client.service';
+
 
 @Component({
   selector: 'app-list-clients',
@@ -12,7 +12,7 @@ export class ListClientsComponent implements OnInit {
   clients: any[] = [];
   searchText: string = '';
 
-  constructor(private _clientService: ClientService, private toastr: ToastrService, private router: Router) { 
+  constructor(private _clientService: ClientService, private toastr: ToastrService) { 
     
   }
 

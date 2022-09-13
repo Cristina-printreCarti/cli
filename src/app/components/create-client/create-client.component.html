@@ -3,7 +3,7 @@
         <div class="col-lg-6 offset-lg-3">
             <div class="card text-center">
                 <div class="card-body">
-                    <h3>{{title}}
+                    <h3>Client details
                         <div *ngIf="loading" class="spinner-border float-right" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div>
@@ -13,7 +13,16 @@
                     <form class="mt-4" [formGroup]="creatClient" (ngSubmit)="addEditClient()">
                         <div class="row">
                             <div class="col">
-                                <input type="text" class="form-control mb-2" formControlName="name" placeholder="Name">
+                                <input type="text" class="form-control mb-2" formControlName="lastname" placeholder="Last Name">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control mb-2" formControlName="name" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control mb-2" formControlName="email"
+                                    placeholder="Email">
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control mb-2" formControlName="phone"
@@ -28,10 +37,6 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <input type="text" class="form-control mb-2" formControlName="email"
-                                    placeholder="Email">
-                            </div>
-                            <div class="col">
                                 <input type="text" class="form-control mb-2" formControlName="city"
                                     placeholder="City">
                             </div>
@@ -43,16 +48,12 @@
                         <div class="row">
                             <div class="col">
                                 <input type="text" class="form-control mb-2" formControlName="iban1"
-                                    placeholder="IBAN1">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control mb-2" formControlName="iban2"
-                                    placeholder="IBAN2">
+                                    placeholder="IBAN">
                             </div>
                         </div>
 
                         <div class="mt-3">
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="submit" class="btn btn-success ">OK</button>
                             <button type="text" class="btn btn-danger mx-2" routerLink="/list-clients">Cancel</button>
                         </div>
                     </form>

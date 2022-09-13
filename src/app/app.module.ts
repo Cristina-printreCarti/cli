@@ -14,6 +14,7 @@ import { ListClientsComponent } from './components/list-clients/list-clients.com
 import { CreateClientComponent } from './components/create-client/create-client.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { environment } from 'src/environments/environment';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { environment } from 'src/environments/environment';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule, 
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule
 
   ],
   providers: [],
