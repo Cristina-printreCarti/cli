@@ -19,8 +19,13 @@ export class CreateClientComponent implements OnInit {
   constructor(private fb: UntypedFormBuilder, private _clientService: ClientService, private router: Router, private toastr: ToastrService, private aRoute: ActivatedRoute) { 
     this.creatClient = this.fb.group({
       name: ['', Validators.required],
+      email: ['', Validators.required],
       phone: ['', Validators.required],
-      address: ['', Validators.required]
+      address: ['', Validators.required],
+      city: ['', Validators.required],
+      county: ['', Validators.required],
+      iban1: ['', Validators.required],
+      iban2: ['', Validators.required]
     })
     this.id = this.aRoute.snapshot.paramMap.get('id');
   }
@@ -47,8 +52,13 @@ export class CreateClientComponent implements OnInit {
   addClient(){
     const client: any = {
       name: this.creatClient.value.name,
+      email: this.creatClient.value.email,
       phone: this.creatClient.value.phone,
       address: this.creatClient.value.address,
+      city: this.creatClient.value.city,
+      county: this.creatClient.value.county,
+      iban1: this.creatClient.value.iban1,
+      iban2: this.creatClient.value.iban2,
     }
     
     this.loading = true;
@@ -68,11 +78,15 @@ export class CreateClientComponent implements OnInit {
       this.loading = true;
       this._clientService.getClient(this.id).subscribe(data => {
         this.loading = false;
-        console.log(data.payload.data()['name']);
         this.creatClient.setValue({
           name: data.payload.data()['name'],
+          email: data.payload.data()['email'],
           phone: data.payload.data()['phone'],
-          address: data.payload.data()['address']
+          address: data.payload.data()['address'],
+          city: data.payload.data()['city'],
+          county: data.payload.data()['county'],
+          iban1: data.payload.data()['iban1'],
+          iban2: data.payload.data()['iban2']
         })
       })
     }

@@ -23,8 +23,6 @@ export class ListClientsComponent implements OnInit {
     this._clientService.getClients().subscribe(data => {
       this.clients = [];
       data.forEach((element:any) => {
-        // console.log(element.payload.doc.id);
-        // console.log(element.payload.doc.data());
         this.clients.push({
           id: element.payload.doc.id,
           ...element.payload.doc.data()

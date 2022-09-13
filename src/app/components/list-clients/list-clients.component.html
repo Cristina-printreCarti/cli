@@ -1,26 +1,37 @@
-<div class="container mt-4">
+<div class="container-fluid my-1">
     <div class="card">
         <div class="card-body">
             <div class="d-flex justify-content-between">
-                <span class="h4 text-center">Clients</span>
-                <h5 *ngIf="clients.length == 0" >There are no clients in the database</h5>
-                <button class="btn btn-dark btn-sm" routerLink="/create-client">Add client</button>
+                <span class="h4 text-center"></span>
+                <h5 *ngIf="clients.length == 0">There are no clients in the database</h5>
+                <button class="btn btn-primary" routerLink="/create-client">Add client</button>
             </div>
             <table *ngIf="clients.length > 0" class="table table-dark table-striped mt-3">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Address</th>
-                        <th>Action</th>
+                        <th scope="col">NAME</th>
+                        <th scope="col" style="width:10%">EMAIL</th>
+                        <th scope="col">MOBILE NO.</th>
+                        <th scope="col" style="width:10%">Address</th>
+                        <th scope="col">CITY</th>
+                        <th scope="col">COUNTY</th>
+                        <th scope="col">IBAN(1)</th>
+                        <th scope="col">IBAN(2)</th>
+                        <th scope="col">ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let client of clients">
                         <td>{{client.name}}</td>
-                        <td>{{client.phone}}</td>
+                        <td>{{client.email}}</td>
+                        <td>{{client.mobile}}</td>
                         <td>{{client.address}}</td>
-                        <td><i class="fa-solid fa-pen-to-square text-info" [routerLink]="['/edit-client/', client.id]"></i>
+                        <td>{{client.city}}</td>
+                        <td>{{client.county}}</td>
+                        <td>{{client.iban1}}</td>
+                        <td>{{client.iban2}}</td>
+                        <td><i class="fa-solid fa-pen-to-square text-info"
+                                [routerLink]="['/edit-client/', client.id]"></i>
                             <i (click)="deleteClient(client.id)" class="fa-solid fa-trash text-danger mx-2"></i>
                         </td>
                     </tr>
