@@ -10,6 +10,7 @@ import { ClientService } from 'src/app/services/client.service';
 })
 export class ListClientsComponent implements OnInit {
   clients: any[] = [];
+  searchText: string = '';
 
   constructor(private _clientService: ClientService, private toastr: ToastrService, private router: Router) { 
     

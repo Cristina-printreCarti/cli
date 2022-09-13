@@ -1,12 +1,19 @@
-<div class="container-fluid my-1">
+<div class="container-fluid my-2">
     <div class="card">
         <div class="card-body">
             <div class="d-flex justify-content-between">
-                <span class="h4 text-center"></span>
-                <h5 *ngIf="clients.length == 0">There are no clients in the database</h5>
                 <button class="btn btn-primary" routerLink="/create-client">Add client</button>
+                <h5 *ngIf="clients.length == 0" class="pt-2 text-danger">There are no clients in the database</h5>
+                <div class="search-client pt-1">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text py-2" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        </div>
+                        <input type="text" class="form-control py-1" name="search" id="search" style="width:230px" [(ngModel)]="searchText" placeholder="Search by name, phone or city">
+                      </div>
+                </div>
             </div>
-            <table *ngIf="clients.length > 0" class="table table-dark table-striped mt-3">
+            <table *ngIf="clients.length > 0" class="table table-dark table-striped mt-3 text-center">
                 <thead>
                     <tr>
                         <th scope="col">NAME</th>
@@ -24,15 +31,15 @@
                     <tr *ngFor="let client of clients">
                         <td>{{client.name}}</td>
                         <td>{{client.email}}</td>
-                        <td>{{client.mobile}}</td>
+                        <td>{{client.phone}}</td>
                         <td>{{client.address}}</td>
                         <td>{{client.city}}</td>
                         <td>{{client.county}}</td>
                         <td>{{client.iban1}}</td>
                         <td>{{client.iban2}}</td>
-                        <td><i class="fa-solid fa-pen-to-square text-info"
+                        <td><i class="fa-solid fa-pen-to-square text-info px-2"
                                 [routerLink]="['/edit-client/', client.id]"></i>
-                            <i (click)="deleteClient(client.id)" class="fa-solid fa-trash text-danger mx-2"></i>
+                            <i (click)="deleteClient(client.id)" class="fa-solid fa-trash text-danger px-2"></i>
                         </td>
                     </tr>
                 </tbody>
