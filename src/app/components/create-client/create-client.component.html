@@ -8,11 +8,7 @@
                           <span class="visually-hidden">Loading...</span>
                         </div>
                     </div>
-                    <h3>Client details
-                        <!-- <div *ngIf="loading" class="spinner-border-sm" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div> -->
-                    </h3>
+                    <h3>Client details</h3>
                     <span style="color:red" *ngIf="submitted && creatClient.invalid">*Toate campurile sunt
                         obligatorii</span>
                     <form class="mt-4" [formGroup]="creatClient" (ngSubmit)="addEditClient()">
