@@ -4,11 +4,11 @@ import { CreateClientComponent } from './components/create-client/create-client.
 import { ListClientsComponent } from './components/list-clients/list-clients.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full'},
-  { path: '/', component: ListClientsComponent },
+  { path: '', redirectTo: 'list-clients', pathMatch: 'full'},
+  { path: 'list-clients', component: ListClientsComponent },
   { path: 'create-client', component: CreateClientComponent },
   { path: 'edit-client/:id', component: CreateClientComponent },
-  { path: '**', redirectTo: '/', pathMatch: 'full' }
+  { path: '**', redirectTo: 'list-clients', pathMatch: 'full' }
 ];
 
 @NgModule({
