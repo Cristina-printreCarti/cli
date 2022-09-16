@@ -64,7 +64,7 @@ export class CreateClientComponent implements OnInit {
     this._clientService.addClient(client).then(() =>{
       this.toastr.success('Client added with success!', 'Client added', {positionClass: 'toast-bottom-right'});
       this.loading = false;
-      this.router.navigate(['/list-clients'])
+      // this.router.navigate(['/list-clients'])
     }).catch(err => {
       console.log(err);
       this.loading = false;
@@ -109,7 +109,7 @@ export class CreateClientComponent implements OnInit {
       this.toastr.info('Client updated', 'Client modified',{
         positionClass: 'toast-bottom-right'
       })
-      this.router.navigate(['/list-clients'])
+      // this.router.navigate(['/list-clients'])
     })
     
   }
